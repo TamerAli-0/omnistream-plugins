@@ -1,0 +1,9 @@
+{
+  "pluginId": "builtin_manga_multi",
+  "name": "Manga Multi",
+  "version": "1.0.0",
+  "type": "manga",
+  "lang": "en",
+  "entryClass": "com.omnistream.plugin.builtin.MangaMultiPlugin",
+  "description": "Bundles MangaKakalot, ManhuaPlus, ManhuaUS, Mgeko, ManhuaFast"
+}

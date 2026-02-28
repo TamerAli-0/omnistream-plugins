@@ -1,0 +1,9 @@
+{
+  "pluginId": "builtin_blkom",
+  "name": "Blkom",
+  "version": "1.0.0",
+  "type": "video",
+  "lang": "ar",
+  "entryClass": "com.omnistream.plugin.builtin.BlkomPlugin",
+  "description": "Blkom — Arabic anime and drama streaming"
+}

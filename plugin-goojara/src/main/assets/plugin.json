@@ -1,0 +1,9 @@
+{
+  "pluginId": "builtin_goojara",
+  "name": "Goojara",
+  "version": "1.0.0",
+  "type": "video",
+  "lang": "en",
+  "entryClass": "com.omnistream.plugin.builtin.GoojaraPlugin",
+  "description": "Goojara — movies and TV shows"
+}

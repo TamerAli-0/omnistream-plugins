@@ -1,124 +1,45 @@
-name: Build OmniStream Plugins
+name: Build and Release Plugins
 
 on:
   push:
-    branches: [ main ]
-    paths:
-      - 'plugin-sources/**'
-      - 'repo-generator/**'
-      - '.github/workflows/build-plugins.yml'
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  build-plugins:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v4
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'gradle'
 
-      - name: Set up Android SDK (for d8)
+      - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      # Build step — compiles plugin-sources/<pluginId>/ into DEX then packages as .omni
-      # Each plugin-sources/<pluginId>/ is a standalone Kotlin project depending on plugin-api
-      - name: Build plugin JARs
+      - name: Grant execute permission to gradlew
+        run: chmod +x gradlew
+
+      - name: Build all plugins
+        run: ./gradlew packagePlugin --parallel
+
+      - name: List built .omni files
+        run: ls -la dist/
+
+      - name: Delete existing latest release
+        run: gh release delete latest --yes --cleanup-tag || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create latest release and upload .omni files
         run: |
-          if [ -d "plugin-sources" ]; then
-            for plugin_dir in plugin-sources/*/; do
-              plugin_id=$(basename "$plugin_dir")
-              echo "Building plugin: $plugin_id"
-              cd "$plugin_dir"
-              ./gradlew :build --no-daemon
-              cd -
-            done
-          else
-            echo "No plugin-sources directory found — skipping build"
-          fi
-
-      # Package compiled classes into .omni (ZIP containing classes.dex + plugin.json)
-      - name: Package .omni files
-        run: |
-          mkdir -p dist
-          if [ -d "plugin-sources" ]; then
-            for plugin_dir in plugin-sources/*/; do
-              plugin_id=$(basename "$plugin_dir")
-              jar_file="$plugin_dir/build/libs/${plugin_id}.jar"
-              manifest_file="$plugin_dir/plugin.json"
-              if [ -f "$jar_file" ] && [ -f "$manifest_file" ]; then
-                # Convert JAR to DEX
-                d8 --output "dist/${plugin_id}_dex/" "$jar_file"
-                # Package as .omni (ZIP)
-                zip -j "dist/${plugin_id}.omni" "dist/${plugin_id}_dex/classes.dex" "$manifest_file"
-                echo "Packaged: ${plugin_id}.omni"
-              fi
-            done
-          fi
-
-      # Regenerate repo.json from plugin.json manifests + built artifacts
-      - name: Update repo.json
-        run: |
-          python3 - << 'EOF'
-          import json, os, glob, sys
-
-          repo = {"name": "OmniStream Official Plugins", "plugins": []}
-          base_url = "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest"
-
-          for manifest_path in sorted(glob.glob("plugin-sources/*/plugin.json")):
-              plugin_id = manifest_path.split("/")[1]
-              with open(manifest_path) as f:
-                  m = json.load(f)
-              repo["plugins"].append({
-                  "pluginId": m["pluginId"],
-                  "name": m["name"],
-                  "version": m["version"],
-                  "type": m["type"],
-                  "lang": m.get("lang", "en"),
-                  "iconUrl": m.get("iconUrl"),
-                  "downloadUrl": f"{base_url}/{plugin_id}.omni",
-                  "entryClass": m["entryClass"],
-                  "description": m.get("description")
-              })
-
-          if repo["plugins"]:
-              with open("repo.json", "w") as f:
-                  json.dump(repo, f, indent=2)
-              print(f"Updated repo.json with {len(repo['plugins'])} plugin(s)")
-          else:
-              print("No plugin manifests found — keeping existing repo.json")
-          EOF
-
-      # Move built .omni files to plugins/ directory
-      - name: Stage .omni artifacts
-        run: |
-          for omni in dist/*.omni; do
-            [ -f "$omni" ] || continue
-            plugin_id=$(basename "$omni" .omni)
-            mkdir -p "plugins/$plugin_id"
-            cp "$omni" "plugins/$plugin_id/"
-            echo "Staged: plugins/$plugin_id/$(basename $omni)"
-          done
-
-      # Commit updated repo.json and plugin artifacts back to repo
-      - name: Commit and push updates
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add repo.json plugins/
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "ci: update plugins and repo.json [skip ci]"
-            git push
-          fi
+          gh release create latest dist/*.omni \
+            --title "Latest Plugins" \
+            --notes "Auto-built from main branch. Install via Plugin Manager → Add Repository." \
+            --latest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

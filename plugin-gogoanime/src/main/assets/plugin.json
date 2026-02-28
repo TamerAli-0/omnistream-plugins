@@ -1,0 +1,9 @@
+{
+  "pluginId": "builtin_gogoanime",
+  "name": "GogoAnime",
+  "version": "1.0.0",
+  "type": "video",
+  "lang": "en",
+  "entryClass": "com.omnistream.plugin.builtin.GogoAnimePlugin",
+  "description": "GogoAnime — free anime streaming with dub and sub"
+}

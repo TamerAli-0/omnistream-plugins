@@ -1,0 +1,9 @@
+{
+  "pluginId": "builtin_mangadex",
+  "name": "MangaDex",
+  "version": "1.0.0",
+  "type": "manga",
+  "lang": "en",
+  "entryClass": "com.omnistream.plugin.builtin.MangaDexPlugin",
+  "description": "MangaDex — the largest manga database"
+}

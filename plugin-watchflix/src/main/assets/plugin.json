@@ -1,0 +1,9 @@
+{
+  "pluginId": "builtin_watchflix",
+  "name": "WatchFlix",
+  "version": "1.0.0",
+  "type": "video",
+  "lang": "en",
+  "entryClass": "com.omnistream.plugin.builtin.WatchFlixPlugin",
+  "description": "WatchFlix — movies and TV shows"
+}

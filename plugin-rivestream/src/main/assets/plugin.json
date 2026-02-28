@@ -1,0 +1,9 @@
+{
+  "pluginId": "builtin_rivestream",
+  "name": "RiveStream",
+  "version": "1.0.0",
+  "type": "video",
+  "lang": "en",
+  "entryClass": "com.omnistream.plugin.builtin.RiveStreamPlugin",
+  "description": "RiveStream — movies and series"
+}

@@ -1,0 +1,9 @@
+{
+  "pluginId": "builtin_asuracomic",
+  "name": "AsuraComic",
+  "version": "1.0.0",
+  "type": "manga",
+  "lang": "en",
+  "entryClass": "com.omnistream.plugin.builtin.AsuraComicPlugin",
+  "description": "AsuraComic — popular manhwa and webtoon"
+}

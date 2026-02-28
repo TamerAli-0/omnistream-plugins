@@ -1,0 +1,9 @@
+{
+  "pluginId": "builtin_nineanime",
+  "name": "9AnimeTV",
+  "version": "1.0.0",
+  "type": "video",
+  "lang": "en",
+  "entryClass": "com.omnistream.plugin.builtin.NineAnimeTvPlugin",
+  "description": "9AnimeTV — one of the largest anime streaming sites"
+}
