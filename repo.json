@@ -8,7 +8,7 @@
       "type": "manga",
       "lang": "en",
       "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_mangadex.omni",
+      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/mangadex.omni",
       "entryClass": "com.omnistream.plugin.builtin.MangaDexPlugin",
       "description": "The largest manga database — read scanlations online or download for offline use"
     },
@@ -19,7 +19,7 @@
       "type": "manga",
       "lang": "en",
       "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_asuracomic.omni",
+      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/asuracomic.omni",
       "entryClass": "com.omnistream.plugin.builtin.AsuraComicPlugin",
       "description": "AsuraComic — popular manhwa and webtoon source"
     },
@@ -30,7 +30,7 @@
       "type": "manga",
       "lang": "en",
       "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_manga_multi.omni",
+      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/manga-multi.omni",
       "entryClass": "com.omnistream.plugin.builtin.MangaMultiPlugin",
       "description": "Bundles MangaKakalot, ManhuaPlus, ManhuaUS, Mgeko, and ManhuaFast"
     },
@@ -41,7 +41,7 @@
       "type": "video",
       "lang": "en",
       "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_nineanime.omni",
+      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/nineanime.omni",
       "entryClass": "com.omnistream.plugin.builtin.NineAnimeTvPlugin",
       "description": "9AnimeTV — one of the largest anime streaming sites"
     },
@@ -52,20 +52,9 @@
       "type": "video",
       "lang": "en",
       "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_gogoanime.omni",
+      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/gogoanime.omni",
       "entryClass": "com.omnistream.plugin.builtin.GogoAnimePlugin",
       "description": "GogoAnime — free anime streaming with dub and sub options"
-    },
-    {
-      "pluginId": "builtin_animekai",
-      "name": "AnimeKai",
-      "version": "1.0.0",
-      "type": "video",
-      "lang": "en",
-      "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_animekai.omni",
-      "entryClass": "com.omnistream.plugin.builtin.AnimeKaiPlugin",
-      "description": "AnimeKai — high-quality anime streaming"
     },
     {
       "pluginId": "builtin_blkom",
@@ -74,7 +63,7 @@
       "type": "video",
       "lang": "ar",
       "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_blkom.omni",
+      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/blkom.omni",
       "entryClass": "com.omnistream.plugin.builtin.BlkomPlugin",
       "description": "Blkom — Arabic anime and drama streaming"
     },
@@ -85,20 +74,9 @@
       "type": "video",
       "lang": "en",
       "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_goojara.omni",
+      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/goojara.omni",
       "entryClass": "com.omnistream.plugin.builtin.GoojaraPlugin",
       "description": "Goojara — movies and TV shows streaming"
-    },
-    {
-      "pluginId": "builtin_flickystream",
-      "name": "FlickyStream",
-      "version": "1.0.0",
-      "type": "video",
-      "lang": "en",
-      "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_flickystream.omni",
-      "entryClass": "com.omnistream.plugin.builtin.FlickyStreamPlugin",
-      "description": "FlickyStream — free movies and TV"
     },
     {
       "pluginId": "builtin_rivestream",
@@ -107,7 +85,7 @@
       "type": "video",
       "lang": "en",
       "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_rivestream.omni",
+      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/rivestream.omni",
       "entryClass": "com.omnistream.plugin.builtin.RiveStreamPlugin",
       "description": "RiveStream — movies and series"
     },
@@ -118,7 +96,7 @@
       "type": "video",
       "lang": "en",
       "iconUrl": null,
-      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/builtin_watchflix.omni",
+      "downloadUrl": "https://github.com/TamerAli-0/omnistream-plugins/releases/download/latest/watchflix.omni",
       "entryClass": "com.omnistream.plugin.builtin.WatchFlixPlugin",
       "description": "WatchFlix — movies and TV shows"
     }
